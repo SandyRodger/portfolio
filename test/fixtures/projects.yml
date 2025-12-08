@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  short_description: MyString
+  description: MyText
+  tech_stack: MyString
+  github_url: MyString
+  live_url: MyString
+  kind: 1
+  highlight: false
+  position: 1
+
+two:
+  title: MyString
+  short_description: MyString
+  description: MyText
+  tech_stack: MyString
+  github_url: MyString
+  live_url: MyString
+  kind: 1
+  highlight: false
+  position: 1
