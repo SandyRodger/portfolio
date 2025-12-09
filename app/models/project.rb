@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
-  enum kind: { personal: 0, client: 1, open_source: 2 }
+  enum status: { planned: 0, in_progress: 1, done: 2 }, _default: :planned
 
   scope :highlighted, -> { where(highlight: true).order(:position) }
   scope :ordered,     -> { order(:position) }
 end
+ 
