@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+Test deployment in the command line with this:
+- `RAILS_ENV=production DATABASE_URL=postgres://localhost/dummy bundle exec rails server`
