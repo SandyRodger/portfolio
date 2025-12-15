@@ -1,46 +1,92 @@
-<div class="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-blue-900 to-blue-500 text-white px-6">
-  <h1 class="text-5xl font-extrabold mb-2">Alexander Rodger</h1>
-  <p class="text-xl opacity-90 mb-8">Software Developer • Artist • Builder</p>
+<div class="min-h-screen bg-gradient-to-br from-blue-900 to-blue-500 text-white">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <!-- HERO -->
+    <header class="text-center">
+      <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight">
+        Alexander Rodger
+      </h1>
+      <p class="mt-3 text-lg sm:text-xl text-white/85">
+        Software Developer • Artist • Builder
+      </p>
 
-  <a href="#work"
-     class="bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl shadow hover:-translate-y-1 hover:shadow-xl transition">
-    View My Work
-  </a>
+      <!-- Primary actions (ONLY place these links appear) -->
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <%= link_to "CV", cv_path,
+          class: "inline-flex items-center rounded-xl bg-white/10 px-5 py-2.5 font-semibold text-white ring-1 ring-white/20 hover:bg-white/15" %>
+
+        <a href="https://github.com/SandyRodger"
+           class="inline-flex items-center rounded-xl bg-white/10 px-5 py-2.5 font-semibold text-white ring-1 ring-white/20 hover:bg-white/15">
+          GitHub
+        </a>
+
+        <a href="https://www.linkedin.com/in/alexander-rodger-742a4b141/"
+           class="inline-flex items-center rounded-xl bg-white/10 px-5 py-2.5 font-semibold text-white ring-1 ring-white/20 hover:bg-white/15">
+          LinkedIn
+        </a>
+      </div>
+    </header>
+
+    <!-- WORK -->
+    <section id="work" class="mt-14">
+      <div class="mb-6 text-center">
+        <h2 class="text-2xl font-bold tracking-tight">Work</h2>
+        <p class="mt-1 text-white/80">
+          A few things I’ve built and written.
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Project -->
+        <div class="rounded-2xl bg-white/10 p-6 ring-1 ring-white/15 shadow-sm">
+          <h3 class="text-lg font-semibold">Gym Trips</h3>
+          <p class="mt-2 text-sm text-white/80">
+            Rails app for tracking gym visits, streaks, and weekly/monthly dashboards.
+          </p>
+
+          <div class="mt-4">
+            <a href="https://gym-trips.onrender.com"
+               class="inline-flex items-center rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/20 hover:bg-white/15">
+              Open app
+            </a>
+          </div>
+        </div>
+
+        <!-- Writing -->
+        <div class="rounded-2xl bg-white/10 p-6 ring-1 ring-white/15 shadow-sm">
+          <h3 class="text-lg font-semibold">Spiegel im Spiegel in Ruby</h3>
+
+          <p class="mt-2 text-sm text-white/80">
+            An explanation of Arvo Pärt’s structure using loops, counters, and conditionals —
+            plus my Sonic Pi implementation.
+          </p>
+
+          <div class="mt-4 flex flex-wrap gap-3">
+            <!-- Medium -->
+            <a href="https://medium.com/@abmrodger/spiegel-im-spiegel-in-ruby-9ad13fb30cad"
+              target="_blank" rel="noopener"
+              class="inline-flex items-center rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/20 hover:bg-white/15">
+              Read on Medium
+            </a>
+          </div>
+        </div>
+
+
+        <!-- About / current focus -->
+        <div class="rounded-2xl bg-white/10 p-6 ring-1 ring-white/15 shadow-sm">
+          <h3 class="text-lg font-semibold">What I’m focusing on</h3>
+          <p class="mt-2 text-sm text-white/80">
+            Ruby on Rails, JavaScript, deployment, and building clean interfaces with Tailwind.
+          </p>
+
+          <p class="mt-4 text-sm text-white/70">
+            If you’re hiring, the CV link above is the best starting point.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-14 text-center text-sm text-white/70">
+      <p>© <%= Time.current.year %> Alexander Rodger</p>
+    </footer>
+  </div>
 </div>
-
-<section id="work" class="p-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-    <h2 class="text-xl font-bold text-gray-900 mb-2">Things that work</h2>
-    <ul>
-      <li class="text-gray-700"><a href="https://www.linkedin.com/in/alexander-rodger-742a4b141/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BdX8ouo9mRUuo9J%2FEGoTOHw%3D%3D">LinkedIn</a></li>
-      <li class="text-gray-700"><a href="https://github.com/SandyRodger">Github</a></li>
-      <li class="text-gray-700">
-        <a href ="https://gym-trips.onrender.com/users/sign_in">rails app: simple gym-app</a>
-      </li>
-      <li><%= link_to "CV", cv_path, class: "nav-link" %></li>
-    </ul>
-  </div>
-  <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-    <ul>
-    </ul>
-  </div>
-    <h2 class="text-xl font-bold text-gray-900 mb-2">Working on now</h2>
-  <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-    <h2 class="text-xl font-bold text-gray-900 mb-2">To do</h2>
-    <ul>
-      <li class="text-gray-700">rails app: variable reward</li>
-      <li class="text-gray-700">React app: maybe?</li>
-      <li class="text-gray-700">Sonic pi thing</li>
-      <li class="text-gray-700">Recap of Launch School curriculum</li>
-    </ul>
-    </div>
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-      <h2 class="text-xl font-bold text-gray-900 mb-2">More personal arty things</h2>
-      <ul>
-        <li class="text-gray-700">daily drawings app: watercolours</li>
-        <li class="text-gray-700">instagram: paintings?</li>
-        <li class="text-gray-700">Instagram: harp?</li>
-        <li class="text-gray-700">Youtube: bed?</li>
-      </ul>
-    </div>
-
