@@ -1,0 +1,99 @@
+<div class="section">
+  <div class="mx-auto max-w-4xl space-y-12">
+
+    <!-- Intro -->
+    <section class="space-y-4">
+      <h1 class="title">Launch School</h1>
+      <p class="work-text max-w-2xl">
+        I studied at <a href="https://launchschool.com" target="_blank" rel="noopener noreferrer" class="text-link">Launch School</a>,
+        a mastery-based software engineering program focused on long-term
+        retention of fundamentals: Ruby, object-oriented design, HTTP, networking,
+        SQL, JavaScript, and problem solving.
+      </p>
+    </section>
+
+    <!-- Apps -->
+    <section class="space-y-4">
+      <h2 class="work-title text-xl">Applications Built During the Program</h2>
+
+      <div class="work-card space-y-3">
+        <h3 class="work-title">Todo Lists — Sinatra</h3>
+        <p class="work-text">
+          A small full-stack web app that lets users create multiple lists and manage todos.
+          Built in Ruby + Sinatra during the networking/database applications module.
+        </p>
+
+        <ul class="cv-list">
+          <li>RESTful routes and ERB templates</li>
+          <li>State stored in encrypted sessions</li>
+          <li>Validation, forms, and flash messages</li>
+        </ul>
+
+        <div class="flex gap-3 mt-3">
+          <%= link_to "Live demo",
+            "https://todo-sinatra-app.onrender.com/lists",
+            class: "btn btn-primary",
+            target: "_blank", rel: "noopener noreferrer" %>
+
+          <%= link_to "GitHub repo", "#",
+            class: "btn btn-secondary",
+            target: "_blank", rel: "noopener noreferrer" %>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curriculum -->
+    <section class="space-y-6">
+      <h2 class="work-title text-xl">Curriculum Modules</h2>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="work-card space-y-3">
+          <h3 class="work-title">Orientation & Prep</h3>
+          <p class="section-title">LS95, RB100</p>
+          <ul class="cv-list">
+            <li>Mastery-based learning approach</li>
+            <li>Ruby & command line fundamentals</li>
+            <li>Git / GitHub workflow</li>
+          </ul>
+        </div>
+
+        <div class="work-card space-y-3">
+          <h3 class="work-title">Programming & Back-end</h3>
+          <p class="section-title">Ruby, HTTP, SQL, Networking</p>
+          <ul class="cv-list">
+            <li>Programming Foundations (RB101–RB119)</li>
+            <li>Object-oriented Ruby (RB120–RB139)</li>
+            <li>Networking & HTTP (LS170, RB175)</li>
+            <li>Database foundations (LS180, RB185)</li>
+            <li>Capstone: networked DB app (RB189)</li>
+          </ul>
+        </div>
+
+        <div class="work-card space-y-3">
+          <h3 class="work-title">Front-end Development</h3>
+          <p class="section-title">HTML, CSS, JavaScript, TypeScript</p>
+          <ul class="cv-list">
+            <li>HTML & CSS layout (LS202)</li>
+            <li>JS fundamentals & OOP (JS210, JS225)</li>
+            <li>DOM, events, async APIs (JS230, JS235)</li>
+            <li>Intro to TypeScript (TS240)</li>
+          </ul>
+        </div>
+
+        <div class="work-card space-y-3">
+          <h3 class="work-title">Problem Solving & CS Foundations</h3>
+          <p class="section-title">Computational Thinking & Algorithms</p>
+          <ul class="cv-list">
+            <li>Breaking problems down logically</li>
+            <li>Data structures & complexity intuition</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="work-text text-xs">
+        Completed modules: LS95, RB100–RB139, LS170–LS181, RB175–RB189, LS202, JS210–JS239, TS240–TS249, LS215–LS259.
+      </p>
+    </section>
+
+  </div>
+</div>

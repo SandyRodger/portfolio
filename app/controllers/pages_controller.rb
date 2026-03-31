@@ -2,6 +2,9 @@ class PagesController < ApplicationController
   def about
   end
 
-  def controller
+  def cv
+  end
+
+  def launch_school
   end
 end

@@ -1,1 +1,203 @@
 @import "tailwindcss";
+
+@theme {
+  /* New palette mapped onto original variable names so compiled CSS stays in sync */
+  /* Midnight Violet #27233a · Charcoal #505168 · Ash Grey #b3c0a4 · Beige #eaefd3 · Soft Fawn #dcc48e */
+
+  --color-brand-lavender-1:  #27233a; /* page background — Midnight Violet */
+  --color-brand-lavender-2:  #312d47; /* card background */
+  --color-brand-lavender-3:  #505168; /* raised card / card-header — Charcoal */
+  --color-brand-lavender-4:  #605f7a; /* borders */
+
+  --color-brand-mauve-1:     #27233a; /* body / sidebar bg */
+  --color-brand-mauve-2:     #c9a96e; /* hover */
+  --color-brand-mauve-3:     #dcc48e; /* primary button — Soft Fawn */
+  --color-brand-mauve-4:     #b3c0a4; /* muted */
+
+  --color-brand-ink-1:       #eaefd3; /* primary text — Beige */
+  --color-brand-ink-2:       #b3c0a4; /* secondary text — Ash Grey */
+}
+
+@layer components {
+  .btn {
+    @apply
+          inline-flex items-center justify-center gap-2
+          rounded-lg px-3 py-2 text-sm font-medium
+          border border-brand-lavender-4
+          shadow-sm
+          transition duration-200
+          focus-visible:outline-none
+          focus-visible:ring-2
+          focus-visible:ring-brand-mauve-2
+          focus-visible:ring-offset-2
+          active:translate-y-px;
+  }
+
+  .btn-primary {
+    @apply bg-brand-mauve-3 text-brand-lavender-1 border-brand-mauve-3
+           font-semibold hover:bg-brand-mauve-2 hover:border-brand-mauve-2;
+  }
+
+  .btn-secondary {
+    @apply bg-brand-lavender-2 text-brand-ink-1 hover:bg-brand-lavender-3;
+  }
+
+  .card {
+    @apply rounded-2xl border border-brand-lavender-4
+           bg-brand-lavender-2 shadow-lg;
+  }
+
+  .card-header {
+    @apply rounded-t-2xl bg-brand-lavender-3
+           border-b border-brand-lavender-4
+           px-6 py-6;
+  }
+
+  .container-pad {
+    @apply px-6;
+  }
+
+  .footer-link {
+    @apply underline hover:text-brand-ink-1;
+  }
+
+  .section {
+    @apply px-6 py-8;
+  }
+
+  .section-title {
+    @apply text-sm font-semibold tracking-wide uppercase text-brand-ink-2;
+  }
+
+  .site-footer {
+    @apply border-t border-brand-lavender-4 bg-brand-lavender-2
+           px-6 py-5 text-sm text-brand-ink-2
+           flex items-center justify-between;
+  }
+
+  .subtitle {
+    @apply mt-2 text-brand-ink-2;
+  }
+
+  .title {
+    @apply text-2xl sm:text-4xl font-bold text-brand-ink-1 tracking-tight;
+  }
+
+  .work-card {
+    @apply rounded-xl bg-brand-lavender-3 border border-brand-lavender-4 p-5;
+  }
+
+  .work-title {
+    @apply text-lg text-brand-ink-1 font-semibold;
+  }
+
+  .work-text {
+    @apply mt-1 text-brand-ink-2;
+  }
+
+  /* CV PAGE */
+
+  .page-wrap {
+    @apply min-h-screen bg-brand-lavender-1 py-10 px-4;
+  }
+
+  .cv {
+    @apply mx-auto max-w-3xl;
+  }
+
+  .cv-header {
+    @apply text-center;
+  }
+
+  .cv-title {
+    @apply text-2xl sm:text-4xl font-bold text-brand-ink-1 tracking-tight;
+  }
+
+  .cv-subtitle {
+    @apply mt-2 text-brand-ink-2;
+  }
+
+  .cv-links {
+    @apply mt-3 flex flex-wrap justify-center gap-2;
+  }
+
+  .cv-section {
+    @apply px-6 py-7 border-t border-brand-lavender-4;
+  }
+
+  .cv-section-title {
+    @apply text-sm font-semibold tracking-wide uppercase text-brand-ink-2;
+  }
+
+  .cv-body {
+    @apply mt-3 text-brand-ink-2 leading-relaxed;
+  }
+
+  .pill-row {
+    @apply mt-3 flex flex-wrap gap-2;
+  }
+
+  .pill {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs
+           bg-brand-lavender-1 border border-brand-lavender-4
+           text-brand-ink-2;
+  }
+
+  .cv-grid {
+    @apply mt-4 grid gap-4;
+  }
+
+  .cv-project {
+    @apply rounded-xl bg-brand-lavender-3 border border-brand-lavender-4 p-5;
+  }
+
+  .cv-project-title {
+    @apply text-lg font-semibold text-brand-ink-1;
+  }
+
+  .cv-project-meta {
+    @apply mt-1 text-sm text-brand-ink-2;
+  }
+
+  .cv-list {
+    @apply mt-3 list-disc pl-5 space-y-1 text-brand-ink-2;
+  }
+
+  .text-link {
+    @apply underline hover:text-brand-ink-1;
+  }
+
+  /* Nav / layout */
+
+  .layout-shell {
+    @apply min-h-screen px-4 py-10 grid gap-6 max-w-6xl mx-auto
+           md:grid-cols-[240px_1fr];
+  }
+
+  .sidebar {
+    @apply md:sticky md:top-10 h-max
+           bg-brand-mauve-1 border border-brand-lavender-4 rounded-xl;
+  }
+
+  .sidebar-title {
+    @apply mt-3 flex flex-col gap-1 text-xs font-semibold tracking-widest
+           uppercase text-brand-ink-2 px-3;
+  }
+
+  .sidebar-link {
+    @apply block rounded-lg px-3 py-2 text-sm text-brand-ink-2 transition
+           hover:bg-brand-lavender-3 hover:text-brand-ink-1;
+  }
+
+  .sidebar-divider {
+    @apply my-4 border-t border-brand-lavender-4;
+  }
+
+  .sidebar-buttons {
+    @apply mt-3 flex flex-col gap-2 px-3 pb-3;
+  }
+
+  .content {
+    @apply min-w-0;
+  }
+}

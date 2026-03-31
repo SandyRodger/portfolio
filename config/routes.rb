@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get "/contact", to: "pages#contact"
   get "up" => "rails/health#show", as: :rails_health_check
   get "/cv", to: "pages#cv"
+  get "launch_school", to: "pages#launch_school"
   
 end

@@ -12,7 +12,6 @@
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
@@ -25,9 +24,39 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+  <body class="bg-brand-mauve-1">
+    <div class="layout-shell">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar p-4">
+          <div class="sidebar-title">Navigate</div>
+
+          <nav class="sidebar-nav">
+            <a class="sidebar-link" href="/#projects">Projects</a>
+            <a class="sidebar-link" href="/#links">Links</a>
+          </nav>
+
+          <div class="sidebar-divider"></div>
+
+          <div class="sidebar-title">External</div>
+          <div class="sidebar-buttons">
+            <%= link_to "GitHub", "https://github.com/SandyRodger",
+                  class: "btn btn-secondary w-full justify-start", target: "_blank", rel: "noopener" %>
+
+            <%= link_to "LinkedIn", "https://www.linkedin.com/in/YOUR_SLUG",
+                  class: "btn btn-secondary w-full justify-start", target: "_blank", rel: "noopener" %>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <main class="content">
+        <%= yield %>
+
+        <footer class="site-footer mt-8">
+          <span><%= Time.current.year %> Alexander Rodger</span>
+        </footer>
+      </main>
+    </div>
   </body>
 </html>

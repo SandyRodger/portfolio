@@ -63,3 +63,7 @@ group :test do
 end
 
 gem "tailwindcss-rails", "~> 4.4"
+
+group :development do
+  gem "hotwire-livereload"
+end
