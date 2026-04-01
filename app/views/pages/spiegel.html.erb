@@ -1,0 +1,177 @@
+<div class="mx-auto max-w-3xl card">
+  <header class="card-header">
+    <h1 class="title">Spiegel im Spiegel in Ruby</h1>
+    <p class="subtitle mt-2">
+      Arvo Pärt's minimalist piece, reimplemented in
+      <a href="https://sonic-pi.net" target="_blank" rel="noopener" class="text-link">Sonic Pi</a>
+      using loops, counters, and conditionals.
+    </p>
+    <div class="mt-4 flex flex-wrap gap-2">
+      <%= link_to "Read the article on Medium",
+            "https://medium.com/@abmrodger/spiegel-im-spiegel-in-ruby-9ad13fb30cad",
+            class: "btn btn-primary", target: "_blank", rel: "noopener" %>
+    </div>
+  </header>
+
+  <section class="cv-section">
+    <h2 class="cv-section-title">About the piece</h2>
+    <p class="cv-body">
+      Spiegel im Spiegel ("Mirror in the Mirror") is a 1978 composition by Arvo Pärt
+      for piano and violin. Its structure is deceptively simple: a single melodic line
+      expands outward and contracts inward in a mirror pattern. I wrote a Ruby program
+      that models this structure algorithmically and plays it through Sonic Pi, a
+      live-coding music environment built on Ruby.
+    </p>
+    <p class="cv-body mt-3">
+      To run this yourself, paste the code into
+      <a href="https://sonic-pi.net" target="_blank" rel="noopener" class="text-link">Sonic Pi</a>
+      (free download) and press Run.
+    </p>
+  </section>
+
+  <section class="cv-section">
+    <h2 class="cv-section-title">Recording</h2>
+    <video class="mt-4 w-full rounded-xl border border-brand-lavender-4" controls preload="metadata">
+      <source src="/videos/spiegel.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <section class="cv-section">
+    <h2 class="cv-section-title">Source code</h2>
+    <pre class="mt-4 overflow-x-auto rounded-xl bg-brand-bg border border-brand-lavender-4 p-5 text-xs leading-relaxed text-brand-ink-2"><code>F_MAJ = [48, 50, 52, 53, 55, 57, 58, 60, 62, 64, 65, 67, 69, 70, 72, 74, 76, 77, 79, 81, 82, 84, 86, 88, 89, 91, 93, 94, 96, 98, 100, 101, 103, 105]
+CHORD_SHAPE_1 = [5, 8]
+CHORD_SHAPE_2 = [5, 9]
+CHORD_SHAPE_3 = [3, 8]
+CHORD_SHAPE_4 = [7, 9]
+MIDDLE_C_IDX = 14
+C_F_A = F_MAJ.select { |n| (n % 12 == 0) || (n % 9 == 0) || (n % 5 == 0) }
+
+def chord_pattern(start_note, intervals, idx, second)
+  play start_note
+  if idx && !second
+    play F_MAJ[idx - 2]
+  elsif idx && second
+    play C_F_A.select { |n| n.between?((start_note + intervals[1]), (start_note + intervals[1] + 8)) }.sample
+  end
+  sleep 0.65
+  play start_note + intervals[0]
+  sleep 0.65
+  play start_note + intervals[1]
+  sleep 0.65
+end
+
+def play_bar(high, branch_length_idx, bar)
+  number = if high
+    idx = MIDDLE_C_IDX + branch_length_idx
+    F_MAJ[idx]
+  else
+    idx = MIDDLE_C_IDX - branch_length_idx
+    F_MAJ[idx]
+  end
+  second = false
+  chord_parser(number, idx, second)
+  second = true
+  chord_parser(number, idx, second)
+  bar += 1
+  return bar
+end
+
+def chord_parser(number, idx, second)
+  remainder = number % 12
+  if [2, 4].include?(remainder)       # D, E
+    chord_pattern(number, CHORD_SHAPE_1, idx, second)
+  elsif [5, 7].include?(remainder)    # F, G
+    chord_pattern(number, CHORD_SHAPE_2, idx, second)
+  elsif remainder == 0                # C
+    chord_pattern(number, CHORD_SHAPE_2, nil, second)
+  elsif remainder == 9                # A
+    chord_pattern(number, CHORD_SHAPE_3, idx, second)
+  elsif remainder == 10               # Bb
+    chord_pattern(number, CHORD_SHAPE_4, idx, second)
+  end
+end
+
+def opening_bars(high, bar)
+  bar = play_bar(high, 0, bar)
+  low_fs
+  bar = play_bar(high, 0, bar)
+  return bar
+end
+
+def main_section(bar, high, branch_length_start, going_outwards)
+  loop do
+    bar = middle_chord(bar) if bar > 3
+    if high
+      high = false
+      branch_length_start += 1
+      going_outwards ? going_outwards = false : going_outwards = true
+    else
+      high = true
+    end
+    branch_length_idx = branch_length_start
+    high_branch_length_idx = 1
+    return bar if branch_length_start > 8
+    loop do
+      if going_outwards
+        bar = play_bar(high, high_branch_length_idx, bar)
+        break if branch_length_idx == high_branch_length_idx
+        high_branch_length_idx += 1
+      else
+        bar = play_bar(high, branch_length_idx, bar)
+        branch_length_idx -= 1
+        break if branch_length_idx == 0
+      end
+    end
+  end
+end
+
+def closing_bars(bar, high)
+  2.times { bar = play_bar(high, 0, bar) }
+  play F_MAJ[MIDDLE_C_IDX]
+  return bar
+end
+
+def plink_or_bong
+  if Random.new.rand(3) == 2
+    high_cs
+  else
+    low_fs
+  end
+end
+
+def middle_chord(bar)
+  high = true
+  play F_MAJ[MIDDLE_C_IDX - 2]
+  bar = play_bar(high, 0, bar)
+  plink_or_bong
+  bar = play_bar(high, 0, bar)
+  return bar
+end
+
+def low_fs
+  with_fx :reverb do
+    play F_MAJ[10]
+  end
+end
+
+def high_cs
+  with_fx :reverb do
+    play F_MAJ[21]
+  end
+end
+
+def play_spiegel_im_spiegel
+  high = true
+  going_outwards = false
+  branch_length_start = 0
+  bar = 1
+  bar = opening_bars(high, bar)
+  bar = main_section(bar, high, branch_length_start, going_outwards)
+  bar = closing_bars(bar, high)
+end
+
+play_spiegel_im_spiegel</code></pre>
+  </section>
+
+</div>

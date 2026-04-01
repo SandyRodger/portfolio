@@ -29,16 +29,14 @@
       <!-- Sidebar -->
       <aside class="sidebar">
         <div class="sidebar p-4">
-          <div class="sidebar-title">Navigate</div>
-
           <nav class="sidebar-nav">
-            <a class="sidebar-link" href="/#projects">Projects</a>
-            <a class="sidebar-link" href="/#links">Links</a>
+            <%= link_to "Home", root_path, class: "sidebar-link" %>
+            <%= link_to "Projects", projects_page_path, class: "sidebar-link" %>
+            <%= link_to "Training", training_path, class: "sidebar-link" %>
           </nav>
 
           <div class="sidebar-divider"></div>
 
-          <div class="sidebar-title">External</div>
           <div class="sidebar-buttons">
             <%= link_to "GitHub", "https://github.com/SandyRodger",
                   class: "btn btn-secondary w-full justify-start", target: "_blank", rel: "noopener" %>

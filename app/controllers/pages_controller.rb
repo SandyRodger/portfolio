@@ -7,4 +7,13 @@ class PagesController < ApplicationController
 
   def launch_school
   end
+
+  def projects
+  end
+
+  def training
+  end
+
+  def spiegel
+  end
 end

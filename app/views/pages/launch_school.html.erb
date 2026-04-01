@@ -1,99 +1,143 @@
-<div class="section">
-  <div class="mx-auto max-w-4xl space-y-12">
+<div class="mx-auto max-w-3xl card">
+  <header class="card-header">
+    <h1 class="title">Launch School</h1>
+    <p class="subtitle">
+      A mastery-based software engineering program. I completed the full
+      back-end and front-end tracks.
+    </p>
+  </header>
 
-    <!-- Intro -->
-    <section class="space-y-4">
-      <h1 class="title">Launch School</h1>
-      <p class="work-text max-w-2xl">
-        I studied at <a href="https://launchschool.com" target="_blank" rel="noopener noreferrer" class="text-link">Launch School</a>,
-        a mastery-based software engineering program focused on long-term
-        retention of fundamentals: Ruby, object-oriented design, HTTP, networking,
-        SQL, JavaScript, and problem solving.
+  <%# Helper: shared table partial rendered inline %>
+
+  <!-- PREPARATORY WORK -->
+  <section class="cv-section">
+    <h2 class="cv-section-title">Preparatory Work</h2>
+    <p class="cv-body">
+      Free introductory courses covering software development fundamentals,
+      the command line, Git, an introduction to Ruby, and problem solving.
+    </p>
+    <table class="mt-4 w-full text-sm">
+      <thead>
+        <tr class="border-b border-brand-lavender-4">
+          <th class="py-2 pr-6 text-left text-brand-ink-2 font-semibold w-28">Course No.</th>
+          <th class="py-2 text-left text-brand-ink-2 font-semibold">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-brand-lavender-4">
+          <td class="py-2 pr-6 text-brand-ink-2">LS95</td>
+          <td class="py-2 text-brand-ink-1">Orientation</td>
+        </tr>
+        <tr>
+          <td class="py-2 pr-6 text-brand-ink-2">RB100</td>
+          <td class="py-2 text-brand-ink-1">Programming &amp; Back-end Prep</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- BACK-END -->
+  <section class="cv-section">
+    <h2 class="cv-section-title">Programming and Back-end Development</h2>
+    <p class="cv-body">
+      A solid foundation in general programming and problem solving, modern web
+      application development, HTTP, server-side code, relational databases, and SQL.
+    </p>
+    <table class="mt-4 w-full text-sm">
+      <thead>
+        <tr class="border-b border-brand-lavender-4">
+          <th class="py-2 pr-6 text-left text-brand-ink-2 font-semibold w-28">Course No.</th>
+          <th class="py-2 text-left text-brand-ink-2 font-semibold">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% [
+          ["RB101", "Programming Foundations with Ruby: Basics"],
+          ["RB109", "Assessment: Programming Foundations with Ruby: Basics"],
+          ["RB110", "Programming Foundations with Ruby: Intermediate"],
+          ["RB119", "Assessment: Programming Foundations with Ruby: Intermediate"],
+          ["RB120", "Object Oriented Programming"],
+          ["RB129", "Assessment: Object Oriented Programming"],
+          ["RB130", "Ruby Foundations: More Topics"],
+          ["RB139", "Assessment: Ruby Foundations More Topics"],
+          ["LS170", "Networking Foundations"],
+          ["LS171", "Assessment: Networking Foundations"],
+          ["RB175", "Networked Applications"],
+          ["LS180", "Database Foundations"],
+          ["LS181", "Assessment: Database Foundations"],
+          ["RB185", "Database Applications"],
+          ["RB189", "Assessment: Networked and Database Applications with Ruby"],
+        ].each_with_index do |(code, name), i| %>
+          <tr class="<%= i < 14 ? 'border-b border-brand-lavender-4' : '' %>">
+            <td class="py-2 pr-6 text-brand-ink-2"><%= code %></td>
+            <td class="py-2 text-brand-ink-1"><%= name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- FRONT-END -->
+  <section class="cv-section">
+    <h2 class="cv-section-title">Front-end Development</h2>
+    <p class="cv-body">
+      HTML, CSS, JavaScript, and the tools professional front-end developers use.
+      Mastery of vanilla JavaScript for DOM interaction, async programming,
+      and an introduction to TypeScript and algorithms.
+    </p>
+    <table class="mt-4 w-full text-sm">
+      <thead>
+        <tr class="border-b border-brand-lavender-4">
+          <th class="py-2 pr-6 text-left text-brand-ink-2 font-semibold w-28">Course No.</th>
+          <th class="py-2 text-left text-brand-ink-2 font-semibold">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% [
+          ["LS202", "HTML and CSS"],
+          ["JS210", "Fundamentals of JavaScript for Programmers"],
+          ["JS211", "Assessment: Fundamentals of JavaScript for Programmers"],
+          ["LS215", "Computational Thinking and Problem Solving"],
+          ["LS216", "Assessment: Computational Thinking and Problem Solving"],
+          ["JS225", "Object Oriented JavaScript"],
+          ["JS229", "Assessment: Object Oriented JavaScript"],
+          ["JS230", "DOM Manipulation &amp; Browser Events"],
+          ["JS235", "Asynchronous JavaScript &amp; APIs"],
+          ["JS239", "Assessment: DOM &amp; Asynchronous Programming with JavaScript"],
+          ["TS240", "Introduction to TypeScript"],
+          ["TS249", "Assessment: Introduction to TypeScript"],
+          ["LS250", "Introduction to Data Structures and Algorithms"],
+          ["LS259", "Assessment: Data Structures and Algorithms"],
+        ].each_with_index do |(code, name), i| %>
+          <tr class="<%= i < 13 ? 'border-b border-brand-lavender-4' : '' %>">
+            <td class="py-2 pr-6 text-brand-ink-2"><%= code %></td>
+            <td class="py-2 text-brand-ink-1"><%= raw name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Todo app -->
+  <section class="cv-section">
+    <h2 class="cv-section-title">Application Built During the Program</h2>
+    <div class="work-card mt-4">
+      <h3 class="work-title">Todo Lists — Sinatra</h3>
+      <p class="work-text">
+        A small full-stack web app that lets users create multiple lists and
+        manage todos. Built in Ruby + Sinatra during the networking/database
+        applications module.
       </p>
-    </section>
-
-    <!-- Apps -->
-    <section class="space-y-4">
-      <h2 class="work-title text-xl">Applications Built During the Program</h2>
-
-      <div class="work-card space-y-3">
-        <h3 class="work-title">Todo Lists — Sinatra</h3>
-        <p class="work-text">
-          A small full-stack web app that lets users create multiple lists and manage todos.
-          Built in Ruby + Sinatra during the networking/database applications module.
-        </p>
-
-        <ul class="cv-list">
-          <li>RESTful routes and ERB templates</li>
-          <li>State stored in encrypted sessions</li>
-          <li>Validation, forms, and flash messages</li>
-        </ul>
-
-        <div class="flex gap-3 mt-3">
-          <%= link_to "Live demo",
-            "https://todo-sinatra-app.onrender.com/lists",
-            class: "btn btn-primary",
-            target: "_blank", rel: "noopener noreferrer" %>
-
-          <%= link_to "GitHub repo", "#",
-            class: "btn btn-secondary",
-            target: "_blank", rel: "noopener noreferrer" %>
-        </div>
+      <ul class="cv-list">
+        <li>RESTful routes and ERB templates</li>
+        <li>State stored in encrypted sessions</li>
+        <li>Validation, forms, and flash messages</li>
+      </ul>
+      <div class="flex gap-3 mt-4">
+        <%= link_to "Live demo", "https://todo-sinatra-app.onrender.com/lists",
+              class: "btn btn-primary", target: "_blank", rel: "noopener noreferrer" %>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Curriculum -->
-    <section class="space-y-6">
-      <h2 class="work-title text-xl">Curriculum Modules</h2>
-
-      <div class="grid gap-6 md:grid-cols-2">
-        <div class="work-card space-y-3">
-          <h3 class="work-title">Orientation & Prep</h3>
-          <p class="section-title">LS95, RB100</p>
-          <ul class="cv-list">
-            <li>Mastery-based learning approach</li>
-            <li>Ruby & command line fundamentals</li>
-            <li>Git / GitHub workflow</li>
-          </ul>
-        </div>
-
-        <div class="work-card space-y-3">
-          <h3 class="work-title">Programming & Back-end</h3>
-          <p class="section-title">Ruby, HTTP, SQL, Networking</p>
-          <ul class="cv-list">
-            <li>Programming Foundations (RB101–RB119)</li>
-            <li>Object-oriented Ruby (RB120–RB139)</li>
-            <li>Networking & HTTP (LS170, RB175)</li>
-            <li>Database foundations (LS180, RB185)</li>
-            <li>Capstone: networked DB app (RB189)</li>
-          </ul>
-        </div>
-
-        <div class="work-card space-y-3">
-          <h3 class="work-title">Front-end Development</h3>
-          <p class="section-title">HTML, CSS, JavaScript, TypeScript</p>
-          <ul class="cv-list">
-            <li>HTML & CSS layout (LS202)</li>
-            <li>JS fundamentals & OOP (JS210, JS225)</li>
-            <li>DOM, events, async APIs (JS230, JS235)</li>
-            <li>Intro to TypeScript (TS240)</li>
-          </ul>
-        </div>
-
-        <div class="work-card space-y-3">
-          <h3 class="work-title">Problem Solving & CS Foundations</h3>
-          <p class="section-title">Computational Thinking & Algorithms</p>
-          <ul class="cv-list">
-            <li>Breaking problems down logically</li>
-            <li>Data structures & complexity intuition</li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="work-text text-xs">
-        Completed modules: LS95, RB100–RB139, LS170–LS181, RB175–RB189, LS202, JS210–JS239, TS240–TS249, LS215–LS259.
-      </p>
-    </section>
-
-  </div>
 </div>

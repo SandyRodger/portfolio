@@ -1,0 +1,45 @@
+<div class="mx-auto max-w-3xl card">
+  <header class="card-header">
+    <h1 class="title">Projects</h1>
+    <p class="subtitle">Things I've built and written.</p>
+  </header>
+
+  <section class="section">
+    <ul class="space-y-6">
+
+      <li class="work-card">
+        <h3 class="work-title">Lane Swim</h3>
+        <p class="work-text">
+          A React app simplifying my local swimming pool's lane swim timetable into a clean, easy-to-read format. Hosted on GitHub Pages.
+        </p>
+        <div class="flex gap-3 mt-3">
+          <%= link_to "Open app", "https://sandyrodger.github.io/lane-swim-gh/", class: "btn btn-primary", target: "_blank", rel: "noopener" %>
+          <%= link_to "GitHub repo", "https://github.com/SandyRodger/lane-swim-gh", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+        </div>
+      </li>
+
+      <li class="work-card">
+        <h3 class="work-title">Calorie Counter</h3>
+        <p class="work-text">
+          Lightweight RESTful web app for logging daily calorie intake, built with Sinatra and PostgreSQL. Deployed to a VPS using Nginx and PM2.
+        </p>
+        <div class="flex gap-3 mt-3">
+          <%= link_to "Open app", "https://calorie-counter-demo.onrender.com", class: "btn btn-primary", target: "_blank", rel: "noopener" %>
+          <%= link_to "GitHub repo", "https://github.com/SandyRodger/calorie_counter", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+        </div>
+      </li>
+
+      <li class="work-card">
+        <h3 class="work-title">Spiegel im Spiegel in Ruby</h3>
+        <p class="work-text">
+          Arvo Pärt's minimalist piece reimplemented in Sonic Pi using loops, counters, and conditionals. Includes the full source code and an explanation of how the mirror structure maps to code.
+        </p>
+        <div class="flex gap-3 mt-3">
+          <%= link_to "Read the Medium article", "https://medium.com/@abmrodger/spiegel-im-spiegel-in-ruby-9ad13fb30cad", class: "btn btn-primary", target: "_blank", rel: "noopener noreferrer" %>
+          <%= link_to "See the code and watch a demo", spiegel_path, class: "btn btn-secondary" %>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+</div>

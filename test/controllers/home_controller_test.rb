@@ -26,18 +26,18 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", "https://github.com/SandyRodger"
   end
 
-  test "homepage lists Launch School entry" do
-    get root_url
-    assert_select "h3", text: /Launch School/
-  end
-
-  test "homepage lists Writing entry" do
-    get root_url
-    assert_select "h3", text: /Writing/
-  end
-
   test "homepage has exactly one footer" do
     get root_url
     assert_select "footer", count: 1
+  end
+
+  test "sidebar links to projects page" do
+    get root_url
+    assert_select "a[href=?]", projects_page_path, text: "Projects"
+  end
+
+  test "sidebar links to training page" do
+    get root_url
+    assert_select "a[href=?]", training_path, text: "Training"
   end
 end
